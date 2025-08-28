@@ -17,3 +17,37 @@
     border-radius: 15px;
     cursor: pointer;
 }
+
+#controls {
+  margin-top: 20px;
+  display: none; /* hidden by default */
+  text-align: center;
+}
+
+.control-btn {
+    display: hidden;
+  font-size: 24px;
+  width: 60px;
+  height: 60px;
+  margin: 5px;
+  border-radius: 12px;
+  border: 2px solid black;
+  cursor: pointer;
+}
+
+/* Show only on small screens (phones/tablets) */
+@media (max-width: 600px) {
+  #gameBoard {
+    width: 100%;     /* scale canvas */
+    height: auto;
+    max-width: 600px;
+  }
+
+  #scoreText {
+    font-size: 60px; /* smaller text on mobile */
+  }
+
+  #controls {
+    display: block;  /* show mobile controls */
+  }
+}

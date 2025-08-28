@@ -159,3 +159,31 @@ function resetGame(){
 ];
     gameStart();
 };
+
+let touchStartX = 0;
+let touchStartY = 0;
+
+gameBoard.addEventListener("touchstart", e => {
+    touchStartX = e.changedTouches[0].screenX;
+    touchStartY = e.changedTouches[0].screenY;
+});
+
+gameBoard.addEventListener("touchend", e => {
+    let touchEndX = e.changedTouches[0].screenX;
+    let touchEndY = e.changedTouches[0].screenY;
+
+    let dx = touchEndX - touchStartX;
+    let dy = touchEndY - touchStartY;
+
+    if (Math.abs(dx) > Math.abs(dy)) {
+        if (dx > 0) changeDirection({ keyCode: 39 }); // right
+        else changeDirection({ keyCode: 37 });        // left
+    } else {
+        if (dy > 0) changeDirection({ keyCode: 40 }); // down
+        else changeDirection({ keyCode: 38 });        // up
+    }
+});
+document.getElementById("upBtn").addEventListener("click", () => changeDirection({ keyCode: 38 }));
+document.getElementById("downBtn").addEventListener("click", () => changeDirection({ keyCode: 40 }));
+document.getElementById("leftBtn").addEventListener("click", () => changeDirection({ keyCode: 37 }));
+document.getElementById("rightBtn").addEventListener("click", () => changeDirection({ keyCode: 39 }));
